@@ -1,5 +1,15 @@
 {
   "expo": {
-    "sdkVersion": "18.0.0"
+    "name": "Jobby McJobface",
+    "description": "Location aware job searching app",
+    "version": "1.0.0",
+    "privacy": "public",
+    "icon": "./src/assets/icons/app.png",
+    "slug": "jobby-mcjobface",
+    "sdkVersion": "18.0.0",
+    "loading": {
+      "icon": "./src/assets/icons/loading.png",
+      "hideExponentText": false
+    }
   }
 }
