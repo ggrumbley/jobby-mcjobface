@@ -7,19 +7,30 @@ import * as actions from '../actions';
 class AuthScreen extends Component {
   componentDidMount() {
     this.props.facebookLogin();
-    AsyncStorage.removeItem('fb_token');
+    this._onAuthComplete(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this._onAuthComplete(nextProps);
+  }
+
+  _onAuthComplete(props) {
+    if (props.token) {
+      this.props.navigation.navigate('map');
+    }
   }
 
   render () {
     return (
-      <View>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-      </View>
+      <View />
     )
   }
 }
 
-export default connect(null, actions)(AuthScreen);
+const mapStateToProps = (state, ownProps) => {
+  return {
+    token: state.auth.token
+  }
+}
+
+export default connect(mapStateToProps, actions)(AuthScreen);
